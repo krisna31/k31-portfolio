@@ -102,7 +102,7 @@ export const cvData = {
     { id: 2, name: "Dev Certified for Machine Learning with Tensorflow", issuer: "Dev.cert", link: "#" },
     { id: 3, name: "Menjadi Backend Developer Expert", issuer: "Dicoding", link: "#" },
     { id: 4, name: "Database Design & Programming with SQL", issuer: "Kominfo", link: "#" },
-    { id: 5, name: "Project Management: Specialization", issuer: "Google", link: "#" },
-    { id: 6, name: "IT Support: Specialization", issuer: "Google", link: "#" }
+    { id: 5, name: "Project Management: Specialization", issuer: "Coursera", link: "#" },
+    { id: 6, name: "IT Support: Specialization", issuer: "Coursera", link: "#" }
   ]
 };
