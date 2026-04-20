@@ -30,7 +30,7 @@ function App() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mt-12 mb-20 text-lg sm:text-xl leading-relaxed text-slate-400 font-light backdrop-blur-sm bg-slate-900/30 p-6 md:p-8 rounded-2xl border border-slate-700/50 shadow-2xl"
+          className="mt-12 mb-20 text-base sm:text-lg md:text-xl leading-relaxed text-slate-400 font-light backdrop-blur-sm bg-slate-900/30 p-5 sm:p-6 md:p-8 rounded-2xl border border-slate-700/50 shadow-2xl"
         >
           <p>{cvData.summary}</p>
         </motion.div>
