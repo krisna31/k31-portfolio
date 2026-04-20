@@ -24,6 +24,7 @@ export const cvData = {
       location: "Palembang, Indonesia",
       role: "Web Developer",
       period: "Feb 2024 - Present",
+      link: "https://www.linkedin.com/in/jelvin-krisna-putra",
       responsibilities: [
         "Develop and maintain the company's internal ERP web system."
       ]
@@ -34,6 +35,7 @@ export const cvData = {
       location: "Palembang, Indonesia",
       role: "Assistant Lecturer",
       period: "Jan 2025 - June 2025",
+      link: "https://www.linkedin.com/in/jelvin-krisna-putra",
       responsibilities: [
         "Assisted in teaching data science and parallel computing courses."
       ]
@@ -44,6 +46,7 @@ export const cvData = {
       location: "Online",
       role: "Mentor Backend",
       period: "June 2023 - Nov 2023",
+      link: "https://www.linkedin.com/feed/update/urn:li:activity:7107637421030178816/https://www.linkedin.com/feed/update/urn:li:activity:7107637421030178816/",
       responsibilities: [
         "Helping participants pass without plagiarism and conducting 60 minute mentoring sessions."
       ]
@@ -54,6 +57,7 @@ export const cvData = {
       location: "Palembang, Indonesia",
       role: "Assistant Lecturer",
       period: "Jan 2023 - June 2023",
+      link: "https://www.linkedin.com/in/jelvin-krisna-putra",
       responsibilities: [
         "Assisted in teaching web programming courses, including Node.js and Laravel."
       ]
@@ -98,11 +102,11 @@ export const cvData = {
     { id: 2, name: "Laporkelah API & Admin Panel", link: "https://github.com/krisna31/laporkelah-laravel" }
   ],
   certifications: [
-    { id: 1, name: "Google Associate Cloud Engineer", issuer: "Google", link: "#" },
-    { id: 2, name: "Dev Certified for Machine Learning with Tensorflow", issuer: "Dev.cert", link: "#" },
-    { id: 3, name: "Menjadi Backend Developer Expert", issuer: "Dicoding", link: "#" },
-    { id: 4, name: "Database Design & Programming with SQL", issuer: "Kominfo", link: "#" },
-    { id: 5, name: "Project Management: Specialization", issuer: "Coursera", link: "#" },
-    { id: 6, name: "IT Support: Specialization", issuer: "Coursera", link: "#" }
+    { id: 1, name: "Google Associate Cloud Engineer", issuer: "Google", link: "https://www.credly.com/badges/040b6243-2c3e-453a-882b-6fb6131ec7d6/public_url" },
+    { id: 2, name: "Dev Certified for Machine Learning with Tensorflow", issuer: "Dev.cert", link: "https://dev.id/certificate/verify/GEVO8MK0O2" },
+    { id: 3, name: "Menjadi Backend Developer Expert", issuer: "Dicoding", link: "https://www.dicoding.com/certificates/1OP858OMQPQK" },
+    { id: 4, name: "Database Design & Programming with SQL", issuer: "Kominfo", link: "https://www.linkedin.com/in/jelvin-krisna-putra" },
+    { id: 5, name: "Project Management: Specialization", issuer: "Coursera", link: "https://www.coursera.org/account/accomplishments/specialization/certificate/C5VBS44LR4ZK" },
+    { id: 6, name: "IT Support: Specialization", issuer: "Coursera", link: "https://www.coursera.org/account/accomplishments/specialization/certificate/28KL5KU6NBL7" }
   ]
 };
