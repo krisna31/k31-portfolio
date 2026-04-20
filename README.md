@@ -59,4 +59,6 @@ The compiled files will be output to the `dist/` directory, ready to be deployed
 To update the portfolio with your own information, simply open `src/data.js` and modify the JSON structure. No need to touch the UI components!
 
 ## 📄 License
-This project is open source and available under the [MIT License](LICENSE).
+**All Rights Reserved**
+
+This project and its original design, source code, and content are the exclusive property of Jelvin Krisna Putra. No license is granted to copy, distribute, or modify this work. Please see the [LICENSE](LICENSE) file for more details.
