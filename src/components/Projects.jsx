@@ -1,0 +1,26 @@
+import React from 'react';
+import { Section } from './Section';
+import { FolderGit2, ExternalLink } from 'lucide-react';
+
+export function Projects({ data }) {
+  return (
+    <Section title="Projects">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        {data.map((project) => (
+          <div key={project.id} className="group p-5 md:p-6 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/60 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer flex flex-col justify-between h-full">
+            <div>
+              <FolderGit2 className="text-blue-500 mb-3 md:mb-4" size={32} />
+              <h4 className="text-lg md:text-xl font-bold text-slate-100 mb-2 group-hover:text-blue-400 transition-colors">
+                {project.name}
+              </h4>
+            </div>
+            <div className="mt-4 md:mt-6 flex items-start sm:items-center gap-2 text-xs sm:text-sm text-slate-400 group-hover:text-emerald-400 transition-colors break-all">
+              <ExternalLink size={16} className="shrink-0 mt-0.5 sm:mt-0" />
+              <span>{project.link}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
