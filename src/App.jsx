@@ -45,7 +45,7 @@ function App() {
       </main>
 
       <footer className="py-8 text-center text-sm text-slate-600 border-t border-slate-800/50">
-        <p>© {new Date().getFullYear()} {cvData.personalInfo.name}. Built with React & Tailwind CSS.</p>
+        <p>© {new Date().getFullYear()} {cvData.personalInfo.name}. Built With 💗.</p>
       </footer>
     </div>
   );

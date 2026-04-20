@@ -7,13 +7,13 @@ export const cvData = {
     email: "krisnaaaputraaa@gmail.com",
     website: "k31.my.id",
     socials: [
-      { name: "LinkedIn", link: "https://linkedin.com", icon: "Briefcase" },
-      { name: "GitHub", link: "https://github.com", icon: "Code" },
-      { name: "Twitter/X", link: "https://twitter.com", icon: "MessageSquare" },
-      { name: "Instagram", link: "https://instagram.com", icon: "Camera" },
-      { name: "YouTube", link: "https://youtube.com", icon: "Video" },
-      { name: "Facebook", link: "https://facebook.com", icon: "Users" },
-      { name: "Dribbble", link: "https://dribbble.com", icon: "Palette" }
+      { name: "LinkedIn", link: "https://linkedin.com/in/jelvin-krisna-putra", icon: "Briefcase" },
+      { name: "GitHub", link: "https://github.com/krisna31", icon: "Code" },
+      // { name: "Twitter/X", link: "https://twitter.com", icon: "MessageSquare" },
+      { name: "Instagram", link: "https://instagram.com/krisna_putra31", icon: "Camera" },
+      // { name: "YouTube", link: "https://youtube.com", icon: "Video" },
+      // { name: "Facebook", link: "https://facebook.com", icon: "Users" },
+      // { name: "Dribbble", link: "https://dribbble.com", icon: "Palette" }
     ]
   },
   summary: "I am a Full Stack Web Developer with over two years of professional experience building software at PT Gemilang Unggul Internasional. I hold a Bachelor's degree in Computer Science from Multi Data Palembang University and am a 2023 graduate of Bangkit Academy. While my primary role is web development, I have expanded my technical skillset to include Cloud Computing and Machine Learning, holding certifications as a Google Associate Cloud Engineer and a TensorFlow Developer. My technical expertise includes Laravel, Flutter, Hapi.js, PHP, JavaScript, and Dart, as well as database management with MySQL and PostgreSQL. Additionally, I developed strong leadership and communication skills during my two years as a university mentor and teaching assistant.",
@@ -94,15 +94,15 @@ export const cvData = {
     }
   ],
   projects: [
-    { id: 1, name: "InterviewKu Capstone Project at Bangkit", link: "Github Link" },
-    { id: 2, name: "Laporkelah API & Admin Panel", link: "Github Link" }
+    { id: 1, name: "InterviewKu Capstone Project at Bangkit", link: "https://github.com/krisna31/interviewku" },
+    { id: 2, name: "Laporkelah API & Admin Panel", link: "https://github.com/krisna31/laporkelah-laravel" }
   ],
   certifications: [
-    { id: 1, name: "Google Associate Cloud Engineer", issuer: "Google" },
-    { id: 2, name: "Dev Certified for Machine Learning with Tensorflow", issuer: "Dev.cert" },
-    { id: 3, name: "Menjadi Backend Developer Expert", issuer: "Dicoding" },
-    { id: 4, name: "Database Design & Programming with SQL", issuer: "Kominfo" },
-    { id: 5, name: "Project Management: Specialization", issuer: "Google" },
-    { id: 6, name: "IT Support: Specialization", issuer: "Google" }
+    { id: 1, name: "Google Associate Cloud Engineer", issuer: "Google", link: "#" },
+    { id: 2, name: "Dev Certified for Machine Learning with Tensorflow", issuer: "Dev.cert", link: "#" },
+    { id: 3, name: "Menjadi Backend Developer Expert", issuer: "Dicoding", link: "#" },
+    { id: 4, name: "Database Design & Programming with SQL", issuer: "Kominfo", link: "#" },
+    { id: 5, name: "Project Management: Specialization", issuer: "Google", link: "#" },
+    { id: 6, name: "IT Support: Specialization", issuer: "Google", link: "#" }
   ]
 };

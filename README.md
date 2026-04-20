@@ -1,8 +1,8 @@
-# Jelvin Krisna Putra - Modern Creative Portfolio 🚀
+# Jelvin Krisna Putra - Modern Creative Portfolio
 
 A highly interactive, creative, and responsive personal portfolio built with modern web technologies. Designed with an "Aurora Glassmorphism" aesthetic, fluid physics-based animations, and a dynamic data-driven structure.
 
-## ✨ Features
+## Features
 
 - **Aurora Glassmorphism Aesthetic**: Beautiful, glowing, animated background gradients with a subtle noise texture and frosted-glass UI components.
 - **Physics-Based Animations**: Powered by `framer-motion`, sections elegantly glide and fade into view as you scroll.
@@ -11,7 +11,7 @@ A highly interactive, creative, and responsive personal portfolio built with mod
 - **Fully Responsive**: Fluid typography and smart grids ensure the site looks perfect on phones, tablets, and desktops.
 - **Data-Driven**: All content (Experience, Education, Projects, Certifications) is centralized in a single `src/data.js` file for extremely easy updates.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: React 19 + Vite
 - **Styling**: Tailwind CSS v4
@@ -19,7 +19,7 @@ A highly interactive, creative, and responsive personal portfolio built with mod
 - **Icons**: Lucide React & React Icons (FontAwesome 6)
 - **Effects**: Typewriter Effect
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
@@ -55,10 +55,10 @@ npm run build
 ```
 The compiled files will be output to the `dist/` directory, ready to be deployed to Vercel, Netlify, GitHub Pages, or any static hosting service.
 
-## 📝 Updating Content
+## Updating Content
 To update the portfolio with your own information, simply open `src/data.js` and modify the JSON structure. No need to touch the UI components!
 
-## 📄 License
+## License
 **All Rights Reserved**
 
 This project and its original design, source code, and content are the exclusive property of Jelvin Krisna Putra. No license is granted to copy, distribute, or modify this work. Please see the [LICENSE](LICENSE) file for more details.

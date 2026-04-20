@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Globe } from 'lucide-react';
-import { FaLinkedinIn, FaGithub, FaXTwitter, FaInstagram, FaYoutube, FaFacebookF, FaDribbble } from 'react-icons/fa6';
+import { FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa6';
 import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 import profilePic from '../assets/jkp.jpg';
@@ -8,11 +8,7 @@ import profilePic from '../assets/jkp.jpg';
 const iconMap = {
   Briefcase: FaLinkedinIn,
   Code: FaGithub,
-  MessageSquare: FaXTwitter,
-  Camera: FaInstagram,
-  Video: FaYoutube,
-  Users: FaFacebookF,
-  Palette: FaDribbble
+  Camera: FaInstagram
 };
 
 export function Hero({ data }) {
