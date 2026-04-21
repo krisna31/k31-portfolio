@@ -98,8 +98,43 @@ export const cvData = {
     }
   ],
   projects: [
-    { id: 1, name: "InterviewKu Capstone Project at Bangkit", link: "https://github.com/krisna31/interviewku" },
-    { id: 2, name: "Laporkelah API & Admin Panel", link: "https://github.com/krisna31/laporkelah-laravel" }
+    {
+      id: 1,
+      name: "InterviewKu Capstone Project at Bangkit",
+      link: "https://github.com/krisna31/interviewku",
+      contributors: [
+        { name: "Jelvin Krisna Putra (Cloud Computing)", github: "krisna31" },
+        { name: "Octa Adriawan (Cloud Computing)", github: "Octaadriawan" },
+        { name: "Rheza Rijaya (Android)", github: "rza101" },
+        { name: "Gilang Wiko Wicaksono (Android)", github: "Ame0thyst" },
+        { name: "Fanes Pratama (Machine Learning)", github: "fanesz" },
+        { name: "Muhammad Firdaus (Mobile Engineering)", github: "MFRDS" },
+        { name: "M. Fikri Aulian (Mobile Engineering)", github: "fikr17" },
+      ]
+    },
+    {
+      id: 2,
+      name: "Laporkelah API & Admin Panel",
+      link: "https://github.com/krisna31/laporkelah-laravel",
+      contributors: [
+        { name: "Jelvin Krisna Putra", github: "krisna31" },
+        { name: "Neilsen Nicholas Komah", github: "neilsen7113" },
+        { name: "Adrian Chen", github: "Luminat3" },
+      ]
+    },
+    {
+      id: 3,
+      name: "Enterprise Resource Planning (ERP) GUI Software",
+      link: "#",
+      contributors: [
+        { name: "Jelvin Krisna Putra", github: "krisna31" },
+        { name: "Jericho", github: "FlakeSnake" },
+        { name: "Hans Patrick", github: "WoufWouf35" },
+        { name: "Eko Saputra", github: "ekosaputra96" },
+        { name: "Dandi", github: "zhytus" },
+        { name: "Arnila", github: "Arnila98" },
+      ]
+    },
   ],
   certifications: [
     { id: 1, name: "Google Associate Cloud Engineer", issuer: "Google", link: "https://www.credly.com/badges/040b6243-2c3e-453a-882b-6fb6131ec7d6/public_url" },

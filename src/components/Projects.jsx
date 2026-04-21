@@ -13,11 +13,40 @@ export function Projects({ data }) {
               <h4 className="text-lg md:text-xl font-bold text-slate-100 mb-2 group-hover:text-blue-400 transition-colors">
                 {project.name}
               </h4>
+
+              {project.contributors && project.contributors.length > 0 && (
+                <div className="flex -space-x-2 mt-4 mb-2">
+                  {project.contributors.map((contributor, idx) => {
+                    const avatarUrl = contributor.github
+                      ? `https://github.com/${contributor.github}.png?size=60`
+                      : `https://ui-avatars.com/api/?name=${encodeURIComponent(contributor.name)}&background=334155&color=fff`;
+
+                    return (
+                      <a
+                        key={idx}
+                        href={contributor.github ? `https://github.com/${contributor.github}` : '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative group/avatar"
+                      >
+                        <img
+                          className="inline-block h-8 w-8 rounded-full ring-2 ring-slate-800 object-cover bg-slate-700 hover:z-10 hover:ring-blue-500 transition-all"
+                          src={avatarUrl}
+                          alt={contributor.name}
+                          title={contributor.name}
+                        />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-            <div className="mt-4 md:mt-6 flex items-start sm:items-center gap-2 text-xs sm:text-sm text-slate-400 group-hover:text-emerald-400 transition-colors break-all">
-              <ExternalLink size={16} className="shrink-0 mt-0.5 sm:mt-0" />
-              <span>{project.link}</span>
-            </div>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="mt-4 md:mt-6 block">
+              <div className="flex items-start sm:items-center gap-2 text-xs sm:text-sm text-slate-400 group-hover:text-emerald-400 transition-colors break-all">
+                <ExternalLink size={16} className="shrink-0 mt-0.5 sm:mt-0 text-slate-100 group-hover:text-emerald-400 transition-colors" />
+                <span>{project.link}</span>
+              </div>
+            </a>
           </div>
         ))}
       </div>
