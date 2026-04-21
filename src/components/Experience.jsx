@@ -1,18 +1,32 @@
 import React from 'react';
 import { Section } from './Section';
-import { Briefcase, ExternalLink } from 'lucide-react';
+import { Briefcase, ExternalLink, Star } from 'lucide-react';
 
 export function Experience({ data }) {
+  const sortedData = [...data].sort((a, b) => {
+    if (a.pinned && b.pinned) {
+      return new Date(b.pinned_at || 0) - new Date(a.pinned_at || 0);
+    }
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+    return (a.order || a.id) - (b.order || b.id);
+  });
+
   return (
     <Section title="Experience">
       <div className="space-y-6">
-        {data.map((job) => {
+        {sortedData.map((job) => {
           const isCurrent = job.period.toLowerCase().includes('present');
           const CardTag = job.link ? 'a' : 'div';
           const cardProps = job.link ? { href: job.link, target: "_blank", rel: "noreferrer" } : {};
 
           return (
-            <CardTag {...cardProps} key={job.id} className={`block p-5 md:p-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl ${isCurrent ? 'bg-blue-500/10 border-2 border-blue-500/80 shadow-[0_0_20px_rgba(59,130,246,0.2)]' : 'bg-slate-800/40 border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/80'} group`}>
+            <CardTag {...cardProps} key={job.id} className={`relative block p-5 md:p-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl ${isCurrent ? 'bg-blue-500/10 border-2 border-blue-500/80 shadow-[0_0_20px_rgba(59,130,246,0.2)]' : 'bg-slate-800/40 border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/80'} group ${job.pinned ? 'ring-1 ring-yellow-500/30' : ''}`}>
+              {job.pinned && (
+                <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-yellow-500/20 p-1.5 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Experience">
+                  <Star size={14} className="text-yellow-500" fill="currentColor" />
+                </div>
+              )}
             <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4">
                 <div className="flex-1">
                   <h4 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors flex items-center gap-2">

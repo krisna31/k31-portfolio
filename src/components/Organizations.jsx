@@ -1,13 +1,27 @@
 import React from 'react';
 import { Section } from './Section';
-import { Users } from 'lucide-react';
+import { Users, Star } from 'lucide-react';
 
 export function Organizations({ data }) {
+  const sortedData = [...data].sort((a, b) => {
+    if (a.pinned && b.pinned) {
+      return new Date(b.pinned_at || 0) - new Date(a.pinned_at || 0);
+    }
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+    return (a.order || a.id) - (b.order || b.id);
+  });
+
   return (
     <Section title="Organizations">
       <div className="space-y-6">
-        {data.map((org) => (
-          <div key={org.id} className="p-5 md:p-6 rounded-xl bg-slate-800/20 border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:border-blue-500/30">
+        {sortedData.map((org) => (
+          <div key={org.id} className={`relative p-5 md:p-6 rounded-xl bg-slate-800/20 border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:border-blue-500/30 ${org.pinned ? 'ring-1 ring-yellow-500/30' : ''}`}>
+            {org.pinned && (
+              <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-yellow-500/20 p-1.5 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Organization">
+                <Star size={14} className="text-yellow-500" fill="currentColor" />
+              </div>
+            )}
             <h4 className="text-lg sm:text-xl font-bold text-slate-100 flex items-start gap-2 mb-3 md:mb-4">
               <Users size={20} className="text-blue-500 shrink-0 mt-0.5" />
               <span>{org.name}</span>

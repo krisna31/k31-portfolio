@@ -1,19 +1,35 @@
 import React from 'react';
 import { Section } from './Section';
-import { FolderGit2, ExternalLink, Lock } from 'lucide-react';
+import { FolderGit2, ExternalLink, Lock, Star } from 'lucide-react';
 
 export function Projects({ data }) {
+  const sortedData = [...data].sort((a, b) => {
+    if (a.pinned && b.pinned) {
+      return new Date(b.pinned_at || 0) - new Date(a.pinned_at || 0);
+    }
+    if (a.pinned && !b.pinned) return -1;
+    if (!a.pinned && b.pinned) return 1;
+    return (a.order || a.id) - (b.order || b.id);
+  });
+  const unpinnedCount = sortedData.filter(p => !p.pinned).length;
+
   return (
     <Section title="Projects">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        {data.map((project, idx) => {
-          const isOddLast = data.length % 2 !== 0 && idx === data.length - 1;
+        {sortedData.map((project, idx) => {
+          const isLastUnpinnedAndOdd = !project.pinned && unpinnedCount % 2 !== 0 && idx === sortedData.length - 1;
+          const shouldSpanFullRow = project.pinned || isLastUnpinnedAndOdd;
           
           return (
             <div 
               key={project.id} 
-              className={`group p-5 md:p-6 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/60 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer flex flex-col justify-between h-full w-full ${isOddLast ? 'md:col-span-2 md:max-w-2xl md:mx-auto' : ''}`}
+              className={`relative group p-5 md:p-6 bg-slate-800/30 rounded-xl border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/60 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/10 cursor-pointer flex flex-col justify-between h-full w-full ${shouldSpanFullRow ? 'md:col-span-2 md:max-w-2xl md:mx-auto' : ''} ${project.pinned ? 'ring-1 ring-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.05)]' : ''}`}
             >
+              {project.pinned && (
+                <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-yellow-500/20 p-1.5 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Project">
+                  <Star size={14} className="text-yellow-500" fill="currentColor" />
+                </div>
+              )}
               <div>
                 <FolderGit2 className="text-blue-500 mb-3 md:mb-4" size={32} />
                 <h4 className="text-lg md:text-xl font-bold text-slate-100 mb-2 group-hover:text-blue-400 transition-colors">
