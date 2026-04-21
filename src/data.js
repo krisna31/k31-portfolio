@@ -7,13 +7,13 @@ export const cvData = {
     email: "krisnaaaputraaa@gmail.com",
     website: "k31.my.id",
     socials: [
-      { name: "LinkedIn", link: "https://linkedin.com/in/jelvin-krisna-putra", icon: "Briefcase" },
-      { name: "GitHub", link: "https://github.com/krisna31", icon: "Code" },
-      // { name: "Twitter/X", link: "https://twitter.com", icon: "MessageSquare" },
-      { name: "Instagram", link: "https://instagram.com/krisna_putra31", icon: "Camera" },
-      // { name: "YouTube", link: "https://youtube.com", icon: "Video" },
-      // { name: "Facebook", link: "https://facebook.com", icon: "Users" },
-      // { name: "Dribbble", link: "https://dribbble.com", icon: "Palette" }
+      { name: "LinkedIn", link: "https://linkedin.com/in/jelvin-krisna-putra", icon: "FaLinkedinIn" },
+      { name: "GitHub", link: "https://github.com/krisna31", icon: "FaGithub" },
+      { name: "Twitter/X", link: "https://twitter.com", icon: "FaXTwitter" },
+      { name: "Instagram", link: "https://instagram.com/krisna_putra31", icon: "FaInstagram" },
+      { name: "YouTube", link: "https://youtube.com", icon: "FaYoutube" },
+      { name: "Facebook", link: "https://facebook.com", icon: "FaFacebook" },
+      { name: "Dribbble", link: "https://dribbble.com", icon: "FaDribbble" }
     ]
   },
   summary: "I am a Full Stack Web Developer with over two years of professional experience building software at PT Gemilang Unggul Internasional. I hold a Bachelor's degree in Computer Science from Multi Data Palembang University and am a 2023 graduate of Bangkit Academy. While my primary role is web development, I have expanded my technical skillset to include Cloud Computing and Machine Learning, holding certifications as a Google Associate Cloud Engineer and a TensorFlow Developer. My technical expertise includes Laravel, Flutter, Hapi.js, PHP, JavaScript, and Dart, as well as database management with MySQL and PostgreSQL. Additionally, I developed strong leadership and communication skills during my two years as a university mentor and teaching assistant.",

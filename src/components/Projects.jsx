@@ -1,6 +1,7 @@
 import React from 'react';
 import { Section } from './Section';
-import { FolderGit2, ExternalLink, Lock, Star } from 'lucide-react';
+import { FolderGit2, ExternalLink, Lock, Star, ArrowRight } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa6';
 
 export function Projects({ data }) {
   const sortedData = [...data].sort((a, b) => {
@@ -80,6 +81,21 @@ export function Projects({ data }) {
             </div>
           );
         })}
+      </div>
+
+      <div className="mt-8 md:mt-12 flex justify-center">
+        <a
+          href="https://github.com/krisna31"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative inline-flex items-center gap-2 px-6 py-3 bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-blue-500/50 rounded-full text-sm sm:text-base font-medium text-slate-300 hover:text-blue-400 transition-all duration-300 shadow-lg hover:shadow-blue-500/20 hover:-translate-y-1"
+        >
+          <FaGithub size={18} className="shrink-0" />
+          <span>View More Projects on GitHub</span>
+          <ArrowRight size={16} className="shrink-0 transform group-hover:translate-x-1 transition-transform" />
+
+          <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/10 group-hover:ring-blue-500/30 transition-all pointer-events-none"></div>
+        </a>
       </div>
     </Section>
   );
