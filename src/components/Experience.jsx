@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-import { Briefcase, ExternalLink, Star } from 'lucide-react';
+import { Briefcase, ArrowUpRight, Star } from 'lucide-react';
 
 export function Experience({ data }) {
   const sortedData = [...data].sort((a, b) => {
@@ -13,42 +13,69 @@ export function Experience({ data }) {
   });
 
   return (
-    <Section title="Experience">
-      <div className="space-y-6">
+    <Section id="experience" title="Work Experience" subtitle="Professional software engineering, teaching, and mentoring roles">
+      <div className="space-y-4">
         {sortedData.map((job) => {
           const isCurrent = job.period.toLowerCase().includes('present');
           const CardTag = job.link ? 'a' : 'div';
-          const cardProps = job.link ? { href: job.link, target: "_blank", rel: "noreferrer" } : {};
+          const cardProps = job.link 
+            ? { href: job.link, target: '_blank', rel: 'noreferrer' } 
+            : {};
 
           return (
-            <CardTag {...cardProps} key={job.id} className={`relative block p-5 md:p-6 rounded-xl transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl ${isCurrent ? 'bg-blue-500/10 border-2 border-blue-500/80 shadow-[0_0_20px_rgba(59,130,246,0.2)]' : 'bg-slate-800/40 border border-slate-700/50 hover:border-blue-500/50 hover:bg-slate-800/80'} group ${job.pinned ? 'ring-1 ring-yellow-500/30' : ''}`}>
-              {job.pinned && (
-                <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-yellow-500/20 p-1.5 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Experience">
-                  <Star size={14} className="text-yellow-500" fill="currentColor" />
+            <CardTag
+              {...cardProps}
+              key={job.id}
+              className={`block p-5 sm:p-6 rounded-xl bg-surface border transition-all duration-200 group hover:border-border-strong hover:shadow-xs ${
+                isCurrent
+                  ? 'border-accent/40 bg-accent-muted/20'
+                  : 'border-border'
+              }`}
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-3">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-base sm:text-lg font-semibold text-text-main group-hover:text-accent transition-colors flex items-center gap-1.5">
+                      <span>{job.role}</span>
+                      {job.link && (
+                        <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                      )}
+                    </h3>
+                    {job.pinned && (
+                      <span className="p-0.5 rounded text-amber-500" title="Pinned">
+                        <Star size={12} fill="currentColor" />
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-text-secondary mt-1">
+                    <span className="font-medium text-text-main">{job.company}</span>
+                    <span className="text-text-muted">•</span>
+                    <span className="text-text-muted">{job.location}</span>
+                  </div>
                 </div>
-              )}
-            <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-3 md:gap-4">
-                <div className="flex-1">
-                  <h4 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors flex items-center gap-2">
-                  {job.role}
-                    {job.link && <ExternalLink size={16} className="text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity" />}
-                </h4>
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-sm sm:text-base text-slate-400 mt-2 md:mt-1">
-                  <Briefcase size={16} className="shrink-0" />
-                  <span className="font-medium text-slate-300">{job.company}</span>
-                  <span className="hidden sm:inline text-slate-600">•</span>
-                  <span className="w-full sm:w-auto mt-1 sm:mt-0">{job.location}</span>
+
+                <div className="flex items-center gap-2 shrink-0">
+                  {isCurrent && (
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                      <span>Current</span>
+                    </span>
+                  )}
+                  <span className="text-xs font-mono text-text-muted px-2 py-0.5 rounded bg-surface-hover border border-border">
+                    {job.period}
+                  </span>
                 </div>
               </div>
-              <span className="text-xs sm:text-sm font-medium px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full w-fit shrink-0">
-                {job.period}
-              </span>
-            </div>
-            <ul className="mt-4 md:mt-5 list-disc list-outside ml-4 text-sm sm:text-base text-slate-400 space-y-2">
-              {job.responsibilities.map((resp, index) => (
-                <li key={index}>{resp}</li>
-              ))}
-            </ul>
+
+              <ul className="mt-3 space-y-1.5 text-xs sm:text-sm text-text-secondary leading-relaxed">
+                {job.responsibilities.map((resp, index) => (
+                  <li key={index} className="flex items-start gap-2">
+                    <span className="text-accent mt-1 shrink-0">•</span>
+                    <span>{resp}</span>
+                  </li>
+                ))}
+              </ul>
             </CardTag>
           );
         })}

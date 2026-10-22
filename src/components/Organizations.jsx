@@ -13,26 +13,43 @@ export function Organizations({ data }) {
   });
 
   return (
-    <Section title="Organizations">
-      <div className="space-y-6">
+    <Section id="organizations" title="Leadership & Organizations" subtitle="Community leadership, tech divisions, and student organization roles">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {sortedData.map((org) => (
-          <div key={org.id} className={`relative p-5 md:p-6 rounded-xl bg-slate-800/20 border border-slate-800 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:border-blue-500/30 ${org.pinned ? 'ring-1 ring-yellow-500/30' : ''}`}>
-            {org.pinned && (
-              <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-yellow-500/20 p-1.5 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Organization">
-                <Star size={14} className="text-yellow-500" fill="currentColor" />
-              </div>
-            )}
-            <h4 className="text-lg sm:text-xl font-bold text-slate-100 flex items-start gap-2 mb-3 md:mb-4">
-              <Users size={20} className="text-blue-500 shrink-0 mt-0.5" />
-              <span>{org.name}</span>
-            </h4>
-            <div className="space-y-3 sm:space-y-4 ml-7">
-              {org.roles.map((role, index) => (
-                <div key={index} className="flex flex-col md:flex-row md:justify-between md:items-start gap-1 sm:gap-2 border-l-2 border-slate-700 pl-3 sm:pl-4">
-                  <span className="font-medium text-slate-300 text-sm sm:text-base">{role.title}</span>
-                  <span className="text-xs sm:text-sm text-slate-500 shrink-0 md:mt-0.5">{role.period}</span>
+          <div 
+            key={org.id} 
+            className="p-5 sm:p-6 rounded-xl bg-surface border border-border hover:border-border-strong hover:shadow-xs transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="flex items-start justify-between gap-2 mb-3">
+                <div className="flex items-center gap-2">
+                  <Users size={16} className="text-accent shrink-0" />
+                  <h3 className="text-sm sm:text-base font-semibold text-text-main">
+                    {org.name}
+                  </h3>
                 </div>
-              ))}
+                {org.pinned && (
+                  <span className="p-0.5 text-amber-500 shrink-0" title="Pinned">
+                    <Star size={12} fill="currentColor" />
+                  </span>
+                )}
+              </div>
+
+              <div className="space-y-2.5 mt-3">
+                {org.roles.map((role, index) => (
+                  <div 
+                    key={index} 
+                    className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 p-2.5 rounded-lg bg-surface-hover border border-border text-xs"
+                  >
+                    <span className="font-medium text-text-main">{role.title}</span>
+                    <span className="font-mono text-text-muted shrink-0">{role.period}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-3 mt-3 border-t border-border text-[11px] text-text-muted">
+              <span>{org.location}</span>
             </div>
           </div>
         ))}

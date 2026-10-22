@@ -1,53 +1,114 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cvData } from './data';
+import { ThemeProvider } from './context/ThemeProvider';
+import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Experience } from './components/Experience';
 import { Education } from './components/Education';
 import { Projects } from './components/Projects';
 import { Certifications } from './components/Certifications';
 import { Organizations } from './components/Organizations';
-import { CustomCursor } from './components/CustomCursor';
+import { ArrowUp, Sparkles, Code2, Cloud, Cpu } from 'lucide-react';
 
-function App() {
+function PortfolioContent() {
+  const highlightStats = [
+    { label: 'Experience', value: '2+ Years', icon: Code2 },
+    { label: 'Academic Standing', value: '3.97 GPA', icon: Sparkles },
+    { label: 'Cloud Certified', value: 'Google ACE', icon: Cloud },
+    { label: 'AI & ML', value: 'TensorFlow', icon: Cpu },
+  ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen selection:bg-blue-500/30 selection:text-blue-200 relative text-slate-100 overflow-x-hidden">
-      <CustomCursor />
-      
-      {/* Dynamic Background */}
-      <div className="fixed inset-0 z-[-1] overflow-hidden bg-slate-950">
-        <div className="absolute top-[-20%] left-[-10%] w-[70%] h-[70%] rounded-full bg-blue-600/15 blur-[120px] animate-blob"></div>
-        <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] rounded-full bg-emerald-600/15 blur-[120px] animate-blob animation-delay-2000"></div>
-        <div className="absolute top-[20%] left-[20%] w-[70%] h-[70%] rounded-full bg-purple-600/15 blur-[120px] animate-blob animation-delay-4000"></div>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-      </div>
+    <div className="min-h-screen bg-canvas text-text-main relative overflow-x-hidden selection:bg-accent selection:text-white">
+      {/* Subtle Local Grid Background (No external assets or heavy gradient blobs) */}
+      <div 
+        aria-hidden="true" 
+        className="fixed inset-0 pointer-events-none z-0 bg-grid-pattern opacity-60 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" 
+      />
 
-      <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pb-24 relative z-10">
+      {/* Floating Top Navigation */}
+      <Navbar />
+
+      {/* Main Container */}
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Hero data={cvData.personalInfo} />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+
+        {/* Editorial Summary & Highlight Chips */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mt-12 mb-20 text-base sm:text-lg md:text-xl leading-relaxed text-slate-400 font-light backdrop-blur-sm bg-slate-900/30 p-5 sm:p-6 md:p-8 rounded-2xl border border-slate-700/50 shadow-2xl"
+          transition={{ duration: 0.5 }}
+          className="mb-12 p-6 sm:p-8 rounded-2xl bg-surface border border-border shadow-xs"
         >
-          <p>{cvData.summary}</p>
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed text-text-secondary font-normal">
+            {cvData.summary}
+          </p>
+
+          {/* Quick Highlight Metrics */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 mt-6 border-t border-border">
+            {highlightStats.map((stat, idx) => {
+              const Icon = stat.icon;
+              return (
+                <div key={idx} className="flex flex-col gap-1 p-2.5 rounded-lg bg-surface-hover/70 border border-border/70">
+                  <div className="flex items-center gap-1.5 text-text-muted text-[11px] font-medium">
+                    <Icon size={13} className="text-accent" />
+                    <span>{stat.label}</span>
+                  </div>
+                  <span className="text-sm sm:text-base font-semibold text-text-main">
+                    {stat.value}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
 
-        <div className="space-y-20">
+        {/* Content Sections */}
+        <div className="space-y-4">
           <Experience data={cvData.experience} />
-          <Education data={cvData.education} />
-          <Organizations data={cvData.organizations} />
           <Projects data={cvData.projects} />
+          <Education data={cvData.education} />
           <Certifications data={cvData.certifications} />
+          <Organizations data={cvData.organizations} />
         </div>
       </main>
 
-      <footer className="py-8 text-center text-sm text-slate-600 border-t border-slate-800/50">
-        <p>© {new Date().getFullYear()} {cvData.personalInfo.name}. Built With 💗.</p>
+      {/* Clean Footer */}
+      <footer className="mt-16 py-8 border-t border-border relative z-10 bg-surface/50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
+          <p>
+            © {new Date().getFullYear()} {cvData.personalInfo.name}. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-4">
+            <span className="font-mono">React 19 • Tailwind v4 • Vite</span>
+            <button
+              type="button"
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1 text-text-secondary hover:text-text-main transition-colors p-1"
+              title="Back to top"
+            >
+              <ArrowUp size={14} />
+              <span>Top</span>
+            </button>
+          </div>
+        </div>
       </footer>
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <ThemeProvider>
+      <PortfolioContent />
+    </ThemeProvider>
   );
 }
 

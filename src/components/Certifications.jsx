@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-import { Award, ExternalLink, Star } from 'lucide-react';
+import { Award, ArrowUpRight, Star } from 'lucide-react';
 
 export function Certifications({ data }) {
   const sortedData = [...data].sort((a, b) => {
@@ -13,27 +13,40 @@ export function Certifications({ data }) {
   });
 
   return (
-    <Section title="Certifications">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+    <Section id="certifications" title="Certifications & Credentials" subtitle="Industry certifications in Cloud Computing, Machine Learning, and Backend Engineering">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
         {sortedData.map((cert) => (
           <a 
             key={cert.id} 
             href={cert.link}
             target="_blank"
             rel="noreferrer"
-            className={`relative group flex items-start gap-3 p-3 sm:p-4 rounded-lg bg-slate-800/20 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:bg-slate-800/40 ${cert.pinned ? 'ring-1 ring-yellow-500/30' : ''}`}
+            className="flex flex-col justify-between p-4 rounded-xl bg-surface border border-border hover:border-border-strong hover:shadow-xs transition-all group"
           >
-            {cert.pinned && (
-              <div className="absolute top-0 right-0 -mt-1.5 -mr-1.5 bg-yellow-500/20 p-1 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Certification">
-                <Star size={10} className="text-yellow-500" fill="currentColor" />
+            <div>
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <span className="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-hover border border-border text-text-secondary">
+                  {cert.issuer}
+                </span>
+                <div className="flex items-center gap-1">
+                  {cert.pinned && (
+                    <span className="p-0.5 text-amber-500" title="Pinned">
+                      <Star size={11} fill="currentColor" />
+                    </span>
+                  )}
+                  <ArrowUpRight size={13} className="text-text-muted group-hover:text-accent transition-colors" />
+                </div>
               </div>
-            )}
-            <Award className="text-emerald-500 shrink-0 mt-0.5 sm:mt-1" size={20} />
-            <div className="flex-1">
-              <h4 className="font-semibold text-slate-200 text-sm sm:text-base group-hover:text-emerald-400 transition-colors">{cert.name}</h4>
-              <p className="text-xs sm:text-sm text-slate-500 mt-1">{cert.issuer}</p>
+
+              <h3 className="font-medium text-text-main text-xs sm:text-sm group-hover:text-accent transition-colors leading-snug">
+                {cert.name}
+              </h3>
             </div>
-            <ExternalLink size={14} className="text-slate-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 mt-1" />
+
+            <div className="mt-3 pt-2.5 border-t border-border flex items-center gap-1.5 text-[11px] text-text-muted">
+              <Award size={12} className="text-accent" />
+              <span>Verified Credential</span>
+            </div>
           </a>
         ))}
       </div>

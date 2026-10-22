@@ -1,24 +1,32 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-export function Section({ title, children }) {
+export function Section({ id, title, subtitle, children }) {
   return (
-    <section className="py-10 md:py-12 border-t border-slate-800/50">
-      <motion.h3 
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.5 }}
-        className="text-2xl md:text-3xl font-bold text-slate-100 mb-6 md:mb-8 inline-block relative after:content-[''] after:absolute after:-bottom-2 after:left-0 after:w-1/2 after:h-1 after:bg-blue-500 after:rounded-full"
-      >
-        {title}
-      </motion.h3>
-      <motion.div 
-        initial={{ opacity: 0, y: 30 }}
+    <section id={id} className="py-12 sm:py-16 border-t border-border scroll-mt-20">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="space-y-8"
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="mb-8"
+      >
+        <div className="flex items-center gap-2 mb-1.5">
+          <span className="w-2 h-2 rounded-full bg-accent" />
+          <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-text-main">
+            {title}
+          </h2>
+        </div>
+        {subtitle && (
+          <p className="text-sm text-text-muted ml-4">{subtitle}</p>
+        )}
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, delay: 0.1 }}
       >
         {children}
       </motion.div>

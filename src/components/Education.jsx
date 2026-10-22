@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-import { GraduationCap, Star } from 'lucide-react';
+import { GraduationCap, Award, Star } from 'lucide-react';
 
 export function Education({ data }) {
   const sortedData = [...data].sort((a, b) => {
@@ -13,31 +13,51 @@ export function Education({ data }) {
   });
 
   return (
-    <Section title="Education">
-      <div className="space-y-6">
-        {sortedData.map((edu) => (
-          <div key={edu.id} className="relative pl-6 sm:pl-8 before:content-[''] before:absolute before:left-0 before:top-2 before:w-3 before:h-3 before:bg-blue-500 before:rounded-full before:ring-4 before:ring-blue-500/20 after:content-[''] after:absolute after:left-[5px] after:top-6 after:w-[2px] after:h-full after:bg-slate-800 last:after:hidden transition-all duration-300 transform hover:translate-x-2">
-            <div className={`relative ${edu.pinned ? 'p-4 rounded-xl bg-slate-800/30 ring-1 ring-yellow-500/30 shadow-[0_0_15px_rgba(234,179,8,0.05)]' : ''}`}>
-              {edu.pinned && (
-                <div className="absolute top-0 right-0 -mt-2 -mr-2 bg-yellow-500/20 p-1.5 rounded-full ring-1 ring-yellow-500/50 shadow-[0_0_15px_rgba(234,179,8,0.3)] z-10 backdrop-blur-sm" title="Pinned Education">
-                  <Star size={12} className="text-yellow-500" fill="currentColor" />
+    <Section id="education" title="Education" subtitle="Academic background and specialized academy programs">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {sortedData.map((edu) => {
+          const hasGpa = edu.degree.includes('GPA');
+
+          return (
+            <div
+              key={edu.id}
+              className="p-5 sm:p-6 rounded-xl bg-surface border border-border hover:border-border-strong hover:shadow-xs transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap size={16} className="text-accent shrink-0" />
+                    <h3 className="text-sm sm:text-base font-semibold text-text-main">
+                      {edu.institution}
+                    </h3>
+                  </div>
+                  {edu.pinned && (
+                    <span className="p-0.5 text-amber-500 shrink-0" title="Pinned">
+                      <Star size={12} fill="currentColor" />
+                    </span>
+                  )}
                 </div>
-              )}
-              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-1 sm:gap-2 mb-2">
-              <h4 className="text-lg sm:text-xl font-bold text-slate-100">
-                {edu.institution}
-              </h4>
-              <span className="text-xs sm:text-sm text-emerald-400 font-medium md:mt-1 shrink-0">
-                {edu.period}
-              </span>
+
+                <p className="text-xs sm:text-sm text-text-secondary leading-relaxed mt-2">
+                  {edu.degree}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between gap-2 pt-4 mt-3 border-t border-border">
+                <span className="text-xs font-mono text-text-muted">
+                  {edu.period}
+                </span>
+
+                {hasGpa && (
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-accent-muted text-accent-fg border border-accent/20">
+                    <Award size={11} />
+                    <span>GPA 3.97</span>
+                  </span>
+                )}
+              </div>
             </div>
-            <div className="flex items-start md:items-center gap-2 text-sm sm:text-base text-slate-300">
-              <GraduationCap size={18} className="text-blue-400 shrink-0 mt-0.5 md:mt-0" />
-              <span>{edu.degree}</span>
-            </div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );

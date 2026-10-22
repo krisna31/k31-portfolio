@@ -1,63 +1,83 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-primary: #3b82f6; /* blue-500 */
-  --color-primary-hover: #2563eb; /* blue-600 */
-  --color-bg-base: #0f172a; /* slate-900 */
-  --color-bg-surface: #1e293b; /* slate-800 */
-  --color-text-base: #f8fafc; /* slate-50 */
-  --color-text-muted: #94a3b8; /* slate-400 */
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-active: var(--surface-active);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text-main: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-fg: var(--accent-fg);
+}
+
+:root {
+  color-scheme: light dark;
+  --canvas: #fbfbfc;
+  --surface: #ffffff;
+  --surface-hover: #f8fafc;
+  --surface-active: #f1f5f9;
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --accent-muted: #eff6ff;
+  --accent-fg: #1d4ed8;
+  --badge-bg: #f1f5f9;
+  --badge-text: #334155;
+  --grid-line: rgba(15, 23, 42, 0.04);
+}
+
+.dark {
+  color-scheme: dark;
+  --canvas: #09090b;
+  --surface: #111114;
+  --surface-hover: #18181b;
+  --surface-active: #27272a;
+  --border: #27272a;
+  --border-strong: #3f3f46;
+  --text: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent: #3b82f6;
+  --accent-muted: rgba(59, 130, 246, 0.12);
+  --accent-fg: #60a5fa;
+  --badge-bg: #18181b;
+  --badge-text: #d4d4d8;
+  --grid-line: rgba(255, 255, 255, 0.04);
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
   body {
-    background-color: var(--color-bg-base);
-    color: var(--color-text-base);
-    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--canvas);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: #ffffff;
   }
 }
 
-@layer utilities {
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
